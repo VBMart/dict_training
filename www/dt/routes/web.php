@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,4 +31,14 @@ Route::get('/checkdb', function (){
     }else{
         return 'failed';
     }
+});
+
+
+Route::get('/test', function (Request $request) {
+    $text = $request->get('show');
+
+    return view('test', [
+        'text' => $text,
+        'user' =>  $request->get('username'),
+    ]);
 });
