@@ -42,3 +42,28 @@ Route::get('/test', function (Request $request) {
         'user' =>  $request->get('username'),
     ]);
 });
+
+Route::get('files/add', function (Request $request){
+    $request->validate([
+        'filename'=>'required|unique:files,file_name',
+    ]);
+
+    $file = new \App\File([
+        'file_name' => $request->get('filename'),
+        'using' => 1
+    ]);
+
+    $file->save();
+
+    return redirect('/files');
+});
+
+Route::get('/files', function (Request $request){
+
+
+    $files = \App\File::all();
+
+    return view('files', [
+        'files' => $files
+    ]);
+});

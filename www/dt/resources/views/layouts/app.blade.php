@@ -62,6 +62,24 @@
                 margin-bottom: 30px;
             }
         </style>
+
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #eeeeee;
+            }
+        </style>
+
     </head>
     <body>
         <div class="flex-center position-ref full-height">
