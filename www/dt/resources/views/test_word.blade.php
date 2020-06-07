@@ -9,7 +9,7 @@
     <p>{{$sentence->ru}}</p>
     <p>{{str_ireplace($word->word, '______', $sentence->en)}}</p>
 
-    <form method="post" action="{{route('test.random')}}">
+    <form method="post" action="{{route('test.random')}}" autocomplete="off">
         @csrf
         <input type="text" name="word">
         <input type="hidden" name="word_id" value="{{$word->id}}">
