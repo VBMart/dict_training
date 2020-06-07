@@ -55,7 +55,7 @@ class TestWordsController extends Controller
 
         $wId = $request->get('word_id');
         $sId = $request->get('sentence_id');
-        $userWord = $request->get('word');
+        $userWord = strtolower($request->get('word'));
 
         $word = Word::findOrFail($wId);
         $sentence = Sentence::findOrFail($sId);
