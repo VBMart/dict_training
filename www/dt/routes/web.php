@@ -34,15 +34,6 @@ Route::get('/checkdb', function (){
 });
 
 
-Route::get('/test', function (Request $request) {
-    $text = $request->get('show');
-
-    return view('test', [
-        'text' => $text,
-        'user' =>  $request->get('username'),
-    ]);
-});
-
 Route::get('files/add', function (Request $request){
     $request->validate([
         'filename'=>'required|unique:files,file_name',
@@ -90,6 +81,9 @@ Route::get('/word/{var}', function (Request $request, $var){
         'word' => $word,
     ]);
 })->name('word.show');
+
+Route::get('/test', 'TestWordsController@randomTest')->name('test.random');
+Route::POST('/test', 'TestWordsController@checkRandomTest');
 
 /*
 Route::get('/seed', function (Request $request){
