@@ -33,8 +33,8 @@
    @endif
 
 
-   <a href="{{route('test.random')}}">
-       <button class="btn-primary">Повторить</button>
+   <a href="{{route('test.random')}}" class="btn btn-primary" role="button">
+       Повторить
    </a>
 @endif
         </div>

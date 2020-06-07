@@ -25,7 +25,22 @@ class TestWordsController extends Controller
             }
         }
 
-        $sentence = $word->sentences()->inRandomOrder()->first();
+//        $word = Word::find(1)->first();
+        $sentence = $word
+            ->sentences()
+            ->whereRaw('`sentences`.`count_symbols` between 10 and 150')
+            ->inRandomOrder()
+            ->first();
+
+        // SQL: select `sentences`.*, `sentence_word`.`word_id` as `pivot_word_id`, `sentence_word`.`sentence_id` as `pivot_sentence_id` from `sentences` inner join `sentence_word` on `sentences`.`id` = `sentence_word`.`sentence_id` where `sentence_word`.`word_id` = 1 and `sentence_word`.`count_symbols` between 8 and 20
+
+//        dump($word->word);
+//        foreach ($sentence as $item) {
+//            dump($item->id);
+//            dump($item->en);
+//        }
+//
+//        dd();
 
         return view('test_word', [
             'success' => null,
