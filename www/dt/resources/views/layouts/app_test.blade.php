@@ -88,10 +88,8 @@
 
     </head>
     <body>
-        <div class="flex-center position-ref">
-           <div class="content">
-               @yield('content')
-            </div>
+       <div class="container">
+           @yield('content')
         </div>
     </body>
 </html>
