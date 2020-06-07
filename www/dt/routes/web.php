@@ -95,3 +95,7 @@ Route::get('/seed', function (Request $request){
     $ss->seedFile($request->get('filename'));
 });
 */
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

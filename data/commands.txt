@@ -1,0 +1,1 @@
+cat ./data/db/dt_db.sql | docker exec -i dict_training_mysql_1  /usr/bin/mysql -u dt_user --password=password dt_db
