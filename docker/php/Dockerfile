@@ -15,4 +15,4 @@ ADD php.ini /usr/local/etc/php/conf.d/40-custom.ini
 RUN composer global require laravel/installer
 RUN composer global require laravel/ui
 
-WORKDIR /var/www/html
+WORKDIR /var/www/html/dt
