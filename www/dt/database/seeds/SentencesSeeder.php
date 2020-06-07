@@ -112,7 +112,7 @@ class SentencesSeeder extends Seeder
      */
     public function run()
     {
-        $allFiles = ['en-ru Books.tmx'];
+        $allFiles = ['en-ru Books.tmx', 'en-ru TildeMODEL.tmx'];
         foreach($allFiles as $fileName)
         {
             $this->seedFile($fileName);

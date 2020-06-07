@@ -96,6 +96,15 @@ Route::get('/seed', function (Request $request){
 });
 */
 
+/*
+Route::get('/seed/{level}', function (Request $request, $level) {
+
+    $ds = new DictionarySeeder();
+    $ds->seedLevel($level);
+});
+*/
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
