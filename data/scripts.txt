@@ -1,0 +1,13 @@
+TRUNCATE `dt_db`.`files`;
+TRUNCATE `dt_db`.`sentences`;
+TRUNCATE `dt_db`.`sentence_word`;
+TRUNCATE `dt_db`.`words`;
+
+
+
+SELECT count(s.id), w.word
+FROM `sentence_word` as s, `words` as w
+WHERE s.word_id = w.id
+GROUP BY s.word_id
+ORDER BY count(s.id) DESC
+limit 30
