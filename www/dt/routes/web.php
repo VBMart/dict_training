@@ -67,3 +67,37 @@ Route::get('/files', function (Request $request){
         'files' => $files
     ]);
 });
+
+Route::get('/sentence/{id}', function (Request $request, $id){
+    $sentence = \App\Sentence::findOrFail($id);
+    dump($sentence->en);
+    dump($sentence->ru);
+    foreach ($sentence->words as $word) {
+        dump($word->word);
+    }
+});
+
+Route::get('/word/id/{id}', function (Request $request, $id){
+    $word = \App\Word::findOrFail($id);
+
+    return redirect()->route('word.show', ['var' => $word->word]);
+});
+
+Route::get('/word/{var}', function (Request $request, $var){
+    $word = \App\Word::where('word', $var)->with('sentences')->firstOrFail();
+
+    return view('word_sentences', [
+        'word' => $word,
+    ]);
+})->name('word.show');
+
+/*
+Route::get('/seed', function (Request $request){
+    $request->validate([
+        'filename'=>'required',
+    ]);
+
+    $ss = new SentencesSeeder();
+    $ss->seedFile($request->get('filename'));
+});
+*/
