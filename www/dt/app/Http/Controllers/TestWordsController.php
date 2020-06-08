@@ -6,15 +6,17 @@ use Illuminate\Http\Request;
 use App\Word;
 use App\Sentence;
 use App\OxfordWord;
+use App\Level;
 
 class TestWordsController extends Controller
 {
-    public function randomTest() {
+    public function randomTest(Request $request, Level $level) {
         $word = null;
         $oxfordWord = null;
         $i = 0;
+
         while (is_null($word)) {
-            $oxfordWord = OxfordWord::inRandomOrder()->first();
+            $oxfordWord = OxfordWord::where('level_id', $level->id)->inRandomOrder()->first();
             $word = Word::where('word', $oxfordWord->en)->first();
             $i ++;
             if ($i > 10) {
@@ -49,10 +51,11 @@ class TestWordsController extends Controller
             'word' => $word,
             'oxfordWord' => $oxfordWord,
             'sentence' => $sentence,
+            'level' => $level,
         ]);
     }
 
-    public function checkRandomTest(Request $request) {
+    public function checkRandomTest(Request $request, Level $level) {
         // TODO Add validation
 
         $wId = $request->get('word_id');

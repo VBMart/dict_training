@@ -5,14 +5,14 @@
         <div class="col-md-8">
             <div class="card mb-3">
                 <div class="card-header">
-                    Подставь слово
+                    Подставь слово <span style="float:right">(Уровень: {{$level->name}})</span>
                 </div>
                 <div class="card-body">
                     @if (is_null($success))
                         <p class="card-text">{{$sentence->ru}}</p>
                         <p class="card-text">{{str_ireplace($word->word, '______', $sentence->en)}}</p>
 
-                        <form method="post" action="{{route('test.random')}}" autocomplete="off">
+                        <form method="post" action="{{route('test.random', ['level' => $level])}}" autocomplete="off">
                             @csrf
                             <input type="text" name="word">
                             <input type="hidden" name="word_id" value="{{$word->id}}">
@@ -67,7 +67,7 @@
                         @endif
 
 
-                        <a href="{{route('test.random')}}" class="btn btn-primary" role="button" id="next">
+                        <a href="{{route('test.random', ['level' => $level])}}" class="btn btn-primary" role="button" id="next">
                             Следующее
                         </a>
                     @endif

@@ -82,8 +82,12 @@ Route::get('/word/{var}', function (Request $request, $var){
     ]);
 })->name('word.show');
 
-Route::get('/test', 'TestWordsController@randomTest')->name('test.random');
-Route::POST('/test', 'TestWordsController@checkRandomTest');
+Route::get('/test/{level:name}', 'TestWordsController@randomTest')->name('test.random');
+Route::POST('/test/{level:name}', 'TestWordsController@checkRandomTest');
+
+Route::get('/test/', function(){
+   return redirect('/test/A1');
+});
 
 /*
 Route::get('/seed', function (Request $request){
