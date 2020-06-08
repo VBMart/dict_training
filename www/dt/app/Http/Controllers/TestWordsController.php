@@ -70,6 +70,7 @@ class TestWordsController extends Controller
             'userWord' => $userWord,
             'word' => $word,
             'sentence' => $sentence,
+            'level' => $level,
         ]);
     }
 }
