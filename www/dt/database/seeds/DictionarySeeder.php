@@ -48,6 +48,6 @@ class DictionarySeeder extends Seeder
      */
     public function run()
     {
-        $this->seedLevel('Asya');
+        $this->seedLevel('Alex');
     }
 }
