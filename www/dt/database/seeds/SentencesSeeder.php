@@ -42,7 +42,7 @@ class SentencesSeeder extends Seeder
                 //dump($sentence);
 
                 // if ru AND en
-                preg_match_all('/[a-zA-Z-]{2,}/s', $sentence['en'], $allWords, PREG_PATTERN_ORDER);
+                preg_match_all('/[a-zA-Z-]{2,50}/s', $sentence['en'], $allWords, PREG_PATTERN_ORDER);
 
                 $words = [];
                 for ($j = 0; $j < count($allWords[0]); $j++) {
@@ -112,7 +112,11 @@ class SentencesSeeder extends Seeder
      */
     public function run()
     {
-        $allFiles = ['en-ru Books.tmx', 'en-ru TildeMODEL.tmx'];
+        $allFiles = [
+            'en-ru TED2013.tmx',
+//            'en-ru Books.tmx',
+//            'en-ru TildeMODEL.tmx'
+        ];
         foreach($allFiles as $fileName)
         {
             $this->seedFile($fileName);
