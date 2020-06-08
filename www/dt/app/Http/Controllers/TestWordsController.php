@@ -11,6 +11,7 @@ class TestWordsController extends Controller
 {
     public function randomTest() {
         $word = null;
+        $oxfordWord = null;
         $i = 0;
         while (is_null($word)) {
             $oxfordWord = OxfordWord::inRandomOrder()->first();
@@ -46,6 +47,7 @@ class TestWordsController extends Controller
             'success' => null,
             'userWord' => null,
             'word' => $word,
+            'oxfordWord' => $oxfordWord,
             'sentence' => $sentence,
         ]);
     }
