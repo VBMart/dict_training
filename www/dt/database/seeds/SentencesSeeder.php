@@ -20,6 +20,11 @@ class SentencesSeeder extends Seeder
             $xmlFile = new DOMDocument('1.0', 'utf-8');
             $xmlFile->load($filePath . $fileName);
 
+            dump('Read');
+
+//            $dbWords = \App\Word::all();
+//            $dbWords->sortBy('words');
+
             $tus = $xmlFile->getElementsByTagName('tu');
             $i = 0;
             foreach ($tus as $tu) {
@@ -95,9 +100,14 @@ class SentencesSeeder extends Seeder
                 // link w_id with s_id
 
                 $i++;
-//                if ($i >= 50){
-//                    break;
-//                }
+                if ($i < 110){
+                    if ($i % 10 == 0) {
+                        dump('Current i: ' . $i);
+                    }
+                }
+                if ($i % 100 == 0){
+                    dump('Current i: '.$i);
+                }
             }
 
 
@@ -113,7 +123,9 @@ class SentencesSeeder extends Seeder
     public function run()
     {
         $allFiles = [
-            'en-ru TED2013.tmx',
+//            'en-ru TED2013.tmx',
+            'en-ru WMT-News.tmx',
+
 //            'en-ru Books.tmx',
 //            'en-ru TildeMODEL.tmx'
         ];
