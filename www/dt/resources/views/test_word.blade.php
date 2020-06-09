@@ -47,6 +47,9 @@
                                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                     <div class="card-body">
                                         {{$oxfordWord->ru1}}
+                                        @if ($oxfordWord->ru2 != '')
+                                            {{$oxfordWord->ru2}}
+                                        @endif
                                     </div>
                                 </div>
                             </div>

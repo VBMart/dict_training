@@ -73,4 +73,11 @@ class TestWordsController extends Controller
             'level' => $level,
         ]);
     }
+
+    public function selectLevel(Request $request) {
+        $levels = Level::all();
+        return view('select_level',[
+            'levels' => $levels,
+        ]);
+    }
 }
