@@ -1,3 +1,3 @@
 // Theme
-import "bootswatch/dist/darkly/bootstrap.min.css";
+import "bootswatch/dist/slate/bootstrap.min.css";
 require('./bootstrap');
