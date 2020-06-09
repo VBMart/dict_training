@@ -45,13 +45,22 @@ class TestWordsController extends Controller
 //
 //        dd();
 
+//        $replaced_sentence = join("--", mb_str_split($sentence->en));
+        $replacedSentence = preg_replace('/(?<![A-Za-z-])'.$word->word.'(?![A-Za-z-])/si', '_______', $sentence->en);
+
+        $wordLetters = str_split($word->word, 1);
+        shuffle($wordLetters);
+        $constructor = join("  ", $wordLetters);
+
         return view('test_word', [
             'success' => null,
             'userWord' => null,
             'word' => $word,
             'oxfordWord' => $oxfordWord,
             'sentence' => $sentence,
+            'replacedSentence' => $replacedSentence,
             'level' => $level,
+            'constructor' => $constructor,
         ]);
     }
 
@@ -65,11 +74,14 @@ class TestWordsController extends Controller
         $word = Word::findOrFail($wId);
         $sentence = Sentence::findOrFail($sId);
 
+        $replacedSentence = preg_replace('/(?<![A-Za-z-])'.$word->word.'(?![A-Za-z-])/si', '_______', $sentence->en);
+
         return view('test_word', [
             'success' => $userWord == $word->word,
             'userWord' => $userWord,
             'word' => $word,
             'sentence' => $sentence,
+            'replacedSentence' => $replacedSentence,
             'level' => $level,
         ]);
     }
