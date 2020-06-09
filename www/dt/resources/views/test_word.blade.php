@@ -1,11 +1,11 @@
 @extends('layouts.app_test')
 
 @section('content')
-    <div class="row justify-content-center align-items-end" style="height: 70vh">
-        <div class="col-md-8">
+    <div class="row justify-content-center align-items-center" style="height: 90vh">
+        <div class="col-8">
             <div class="card mb-3">
                 <div class="card-header">
-                    Подставь слово <span style="float:right">(Уровень: {{$level->name}})</span>
+                    Подставь слово <a href="{{route('test.select_level')}}" style="float:right">(Уровень: {{$level->name}})</a>
                 </div>
                 <div class="card-body">
                     @if (is_null($success))
@@ -14,44 +14,47 @@
 
                         <form method="post" action="{{route('test.random', ['level' => $level])}}" autocomplete="off">
                             @csrf
-                            <input type="text" name="word" autofocus>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="word" autofocus placeholder="Введите слово">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="submit">Проверить</button>
+                                </div>
+                            </div>
+
                             <input type="hidden" name="word_id" value="{{$word->id}}">
                             <input type="hidden" name="sentence_id" value="{{$sentence->id}}">
-                            <button type="submit" class="btn-primary">Проверить</button>
                         </form>
 
-                        <div id="accordion" class="mt-3">
+                        <div id="accordion" class="col-4 mt-3 px-0 pt-1">
                             <div class="card">
-                                <div class="card-header" id="headingOne">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                            Первая буква
-                                        </button>
-                                    </h5>
+                                <div class="card-header py-2 px-3" id="headingOne">
+                                    <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" size="small">
+                                        Первая буква
+                                    </a>
                                 </div>
 
                                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                                    <div class="card-body">
-                                        Первая буква: {{$word->word[0]}}
+                                    <div class="card-body py-3 px-3">
+                                        <h4 class="text-uppercase mb-0">{{$word->word[0]}}</h4>
                                     </div>
                                 </div>
                             </div>
                             <div class="card">
-                                <div class="card-header" id="headingTwo">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Перевод
-                                        </button>
-                                    </h5>
+                                <div class="card-header py-2 px-3" id="headingTwo">
+                                    <a href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" size="small">
+                                       Перевод
+                                    </a>
                                 </div>
                                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                    <div class="card-body">
+                                    <div class="card-body py-3 px-3">
                                         {{$oxfordWord->ru1}}
                                         @if ($oxfordWord->ru2 != '')
-                                            {{$oxfordWord->ru2}}
+                                            , {{$oxfordWord->ru2}}
                                         @endif
                                     </div>
                                 </div>
+
+                               
                             </div>
                         </div>
                     @else
@@ -80,7 +83,4 @@
 
     </div>
 
-    <div class="row justify-content-center align-items-center">
-        <a href="{{route('test.select_level')}}">Выбор  уровня</a>
-    </div>
 @endsection
