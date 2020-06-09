@@ -84,7 +84,7 @@ Route::get('/word/{var}', function (Request $request, $var){
 
 Route::get('/test/{level:name}', 'TestWordsController@randomTest')->name('test.random');
 Route::POST('/test/{level:name}', 'TestWordsController@checkRandomTest');
-Route::get('/test', 'TestWordsController@selectLevel');
+Route::get('/test', 'TestWordsController@selectLevel')->name('test.select_level');
 
 
 

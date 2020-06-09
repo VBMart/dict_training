@@ -1,7 +1,7 @@
 @extends('layouts.app_test')
 
 @section('content')
-    <div class="row justify-content-center align-items-center" style="height: 80vh">
+    <div class="row justify-content-center align-items-end" style="height: 70vh">
         <div class="col-md-8">
             <div class="card mb-3">
                 <div class="card-header">
@@ -77,5 +77,10 @@
                 </div>
             </div>
         </div>
+
+    </div>
+
+    <div class="row justify-content-center align-items-center">
+        <a href="{{route('test.select_level')}}">Выбор  уровня</a>
     </div>
 @endsection
