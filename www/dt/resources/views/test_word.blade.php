@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row justify-content-center align-items-center" style="height: 90vh">
-        <div class="col-8">
+        <div class="col-md-8">
             <div class="card mb-3">
                 <div class="card-header">
                     Подставь слово <a href="{{route('test.select_level')}}" style="float:right">(Уровень: {{$level->name}})</a>
@@ -25,7 +25,7 @@
                             <input type="hidden" name="sentence_id" value="{{$sentence->id}}">
                         </form>
 
-                        <div id="accordion" class="col-4 mt-3 px-0 pt-1">
+                        <div id="accordion" class="col-md-5 mt-3 px-0 pt-1">
                             <div class="card">
                                 <div class="card-header py-2 px-3" id="headingOne">
                                     <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" size="small">
@@ -54,7 +54,7 @@
                                     </div>
                                 </div>
 
-                               
+
                             </div>
                         </div>
                     @else
