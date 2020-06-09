@@ -14,7 +14,7 @@
 
                         <form method="post" action="{{route('test.random', ['level' => $level])}}" autocomplete="off">
                             @csrf
-                            <input type="text" name="word">
+                            <input type="text" name="word" autofocus>
                             <input type="hidden" name="word_id" value="{{$word->id}}">
                             <input type="hidden" name="sentence_id" value="{{$sentence->id}}">
                             <button type="submit" class="btn-primary">Проверить</button>
@@ -70,7 +70,7 @@
                         @endif
 
 
-                        <a href="{{route('test.random', ['level' => $level])}}" class="btn btn-primary" role="button" id="next">
+                        <a href="{{route('test.random', ['level' => $level])}}" class="btn btn-primary" role="button" id="next" autofocus>
                             Следующее
                         </a>
                     @endif
