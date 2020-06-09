@@ -3,7 +3,7 @@
 @section('content')
     <div class="row justify-content-center align-items-center" style="height: 90vh">
         <div class="col-md-8">
-            <div class="card mb-3">
+            <div class="card mb-1">
                 <div class="card-header">
                     Подставь слово <a href="{{route('test.select_level')}}" style="float:right">(Уровень: {{$level->name}})</a>
                 </div>
@@ -97,6 +97,10 @@
                         </a>
                     @endif
                 </div>
+
+            </div>
+            <div class="px-2">
+                <p align="right" style="color:#454545" size="small">from file: {{$sentence->file->file_name}}</p>
             </div>
         </div>
 

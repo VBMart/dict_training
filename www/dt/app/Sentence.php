@@ -12,4 +12,9 @@ class Sentence extends Model
     {
         return $this->belongsToMany('App\Word');
     }
+
+    public function file()
+    {
+        return $this->belongsTo('App\File');
+    }
 }
